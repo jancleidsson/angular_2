@@ -9,7 +9,7 @@ import {Component} from 'angular2/core';
     <span [class.is-awesome]="inputFieldLocalVariable.value === 'yes'">It's awesome!</span>
     <input type="text" #inputFieldLocalVariable (keyup)="0">
     `,
-    styles: ['src/css/mycomponent.css'] 
+    styleUrls: ['src/css/mycomponent.css'] 
 })
 
 export class MyComponentComponent {
