@@ -32,6 +32,11 @@ import {RouteConfig} from 'angular2/router'
         path: '/newcontact',
         name: 'NewContact',
         component: NewContactComponent
+    },
+    {
+        path: '/newcontact/:lastName',
+        name: 'NewContactFromContact',
+        component: NewContactComponent
     }
 ])
 export class AppComponent {
