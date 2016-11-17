@@ -40,7 +40,7 @@ import {Contact} from './contact'
                 required
             >
         </div>
-        <button type="submit">Create contact</button>
+        <button type="submit" [disabled]="!contactForm.form.valid">Create contact</button>
     </form>
     `,
     providers: [ContactService],
