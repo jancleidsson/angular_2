@@ -10,7 +10,7 @@ import {OnInit} from 'angular2/core'
     <ul>
         <li *ngFor="#contact of contacts"
         (click)="onSelect(contact)"
-        [class.red-style]="selectedContact === contact">
+        [class.clicked]="selectedContact === contact">
         {{contact.firstName}}
         </li>
     </ul>
@@ -18,7 +18,7 @@ import {OnInit} from 'angular2/core'
     `,
     directives: [ContactComponent],
     providers: [ContactService],
-    styleUrls: ['src/css/mycomponent.css']
+    styleUrls: ['src/css/contact-list.css']
 })
 
 export class ContactsComponent implements OnInit {
