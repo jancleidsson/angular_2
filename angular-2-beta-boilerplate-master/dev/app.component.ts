@@ -8,10 +8,8 @@ import {RouteConfig} from 'angular2/router'
 
 @Component({
     selector: 'my-app',
-    template: `
-        <!-- <my-component></my-component> -->
-        <!-- <my-information></my-information> -->
-        <header>
+    template: 
+    `   <header>
             <nav>
                 <a [routerLink]="['Contacts']">Contacts</a>
                 <a [routerLink]="['NewContact']">New Contact</a>

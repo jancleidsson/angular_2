@@ -4,14 +4,12 @@ import {ContactService} from './contact.service'
 import {Contact} from './contact'
 import {OnInit} from 'angular2/core'
 
-@Component({
-    selector: 'contacts-component',
-    template: `
+@Component({ template: `
     <ul>
         <li *ngFor="#contact of contacts"
         (click)="onSelect(contact)"
         [class.clicked]="selectedContact === contact">
-        {{contact.firstName}}
+        {{contact.firstName}} {{contact.lastName}}
         </li>
     </ul>
     <contact-component [contact]="selectedContact"><contact-component>

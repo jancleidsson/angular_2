@@ -15,7 +15,7 @@ export const CONTACTS: Contact[] = [
         },
         {
             firstName: 'Ismael',
-            lastName: 'silva',
+            lastName: 'Silva',
             phone: '81-9999-7777',
             email: 'ismael@gmail.com'
         },
