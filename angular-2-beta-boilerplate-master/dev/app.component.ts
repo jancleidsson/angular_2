@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import {MyComponentComponent} from './my-component.component';
 import {MyInformationComponent} from './my-information.component';
-import {ContactsComponent} from './contacts.component';
+import {ContactsComponent} from './contact/contacts.component';
 
 @Component({
     selector: 'my-app',

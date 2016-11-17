@@ -1,5 +1,8 @@
 import {Component} from 'angular2/core'
 import {ContactComponent} from './contact.component'
+import {ContactService} from './contact.service'
+import {Contact} from './contact'
+import {OnInit} from 'angular2/core'
 
 @Component({
     selector: 'contacts-component',
@@ -14,34 +17,27 @@ import {ContactComponent} from './contact.component'
     <contact-component [contact]="selectedContact"><contact-component>
     `,
     directives: [ContactComponent],
+    providers: [ContactService],
     styleUrls: ['src/css/mycomponent.css']
 })
 
-export class ContactsComponent {
-    public contacts = [
-        {
-            firstName: 'Jancleidsson',
-            lastName: 'Soares',
-            phone: '81-9999-9999',
-            email: 'jancleidsson@gmail.com'
-        },
-        {
-            firstName: 'Carlos',
-            lastName: 'José',
-            phone: '81-9999-8888',
-            email: 'carlos@gmail.com'
-        },
-        {
-            firstName: 'Ismael',
-            lastName: 'silva',
-            phone: '81-9999-7777',
-            email: 'ismael@gmail.com'
-        }
-    ]
-
+export class ContactsComponent implements OnInit {
+    
+    public contacts: Contact[];
     public selectedContact = {};
 
-    onSelect(contact){
+    constructor(private _contactService: ContactService){
+    }
+
+    onSelect(contact) {
         this.selectedContact = contact;
+    }
+
+    getContacts() {
+        this._contactService.getContacts().then((contacts: Contact[]) => this.contacts = contacts);
+    }
+
+    ngOnInit():any {
+        this.getContacts();
     }
 }
