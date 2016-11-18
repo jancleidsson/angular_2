@@ -6,6 +6,7 @@ import {NewContactComponent} from './contact/new-contact.component';
 import {HTTPTestComponent} from './test-components/http-test.component'
 import {ROUTER_DIRECTIVES} from 'angular2/router'
 import {RouteConfig} from 'angular2/router'
+import {PipesComponent} from './test-components/pipes.component'
 
 @Component({
     selector: 'my-app',
@@ -19,8 +20,9 @@ import {RouteConfig} from 'angular2/router'
         <div class = "main">
             <router-outlet></router-outlet>
             <http-test></http-test>
+            <pipes></pipes>
         </div>
-    `, directives: [ContactsComponent, HTTPTestComponent,  ROUTER_DIRECTIVES]
+    `, directives: [ContactsComponent, HTTPTestComponent, PipesComponent,  ROUTER_DIRECTIVES]
 })
 
 @RouteConfig([

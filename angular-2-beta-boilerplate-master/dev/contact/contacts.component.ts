@@ -9,7 +9,7 @@ import {OnInit} from 'angular2/core'
         <li *ngFor="#contact of contacts"
         (click)="onSelect(contact)"
         [class.clicked]="selectedContact === contact">
-        {{contact.firstName}} {{contact.lastName}}
+        {{contact.firstName | uppercase}} {{contact.lastName}}
         </li>
     </ul>
     <contact-component *ngIf ="selectedContact !== null" [contact]="selectedContact"><contact-component>
