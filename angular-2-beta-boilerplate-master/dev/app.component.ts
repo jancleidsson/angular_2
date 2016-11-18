@@ -1,8 +1,9 @@
 import {Component} from 'angular2/core';
-import {MyComponentComponent} from './my-component.component';
-import {MyInformationComponent} from './my-information.component';
+import {MyComponentComponent} from './test-components/my-component.component';
+import {MyInformationComponent} from './test-components/my-information.component';
 import {ContactsComponent} from './contact/contacts.component';
 import {NewContactComponent} from './contact/new-contact.component';
+import {HTTPTestComponent} from './test-components/http-test.component'
 import {ROUTER_DIRECTIVES} from 'angular2/router'
 import {RouteConfig} from 'angular2/router'
 
@@ -17,8 +18,9 @@ import {RouteConfig} from 'angular2/router'
         </header>
         <div class = "main">
             <router-outlet></router-outlet>
+            <http-test></http-test>
         </div>
-    `, directives: [ContactsComponent, NewContactComponent, ROUTER_DIRECTIVES]
+    `, directives: [ContactsComponent, HTTPTestComponent,  ROUTER_DIRECTIVES]
 })
 
 @RouteConfig([
