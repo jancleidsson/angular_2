@@ -4,43 +4,38 @@ import {Router} from 'angular2/router'
 import {RouteParams} from 'angular2/router'
 import {OnInit} from 'angular2/core'
 import {Contact} from './contact'
+import {ControlGroup} from 'angular2/common'
+import {FormBuilder} from  'angular2/common'
+import {Validators} from 'angular2/common'
 
 @Component({
     template: `
-    <form #contactForm="ngForm" (ngSubmit)="onSubmit()">
+    <form [ngFormModel]="contactForm"(ngSubmit)="onSubmit()">
         <div>
             <label for="first-name">First Name:</label>
-            <input type="text" id="first-name" 
-                ngControl="firstName"  
-                [(ngModel)]="newContact.firstName"
-                required
+            <input type="text" id="first-name"
+            [ngFormControl]="contactForm.controls['firstName']"
             >
         </div>
         <div>
             <label for="last-name">Last Name:</label>
             <input type="text" id="last-name" 
-                ngControl="lastName"  
-                [(ngModel)]="newContact.lastName"
-                required
+            [ngFormControl]="contactForm.controls['lastName']"
             >
         </div>
         <div>
             <label for="phone">Phone:</label>
-            <input type="text" id="phone" 
-                ngControl="phone"  
-                [(ngModel)]="newContact.phone"
-                required
+            <input type="text" id="phone"
+            [ngFormControl]="contactForm.controls['phone']"
             >
         </div>
         <div>
             <label for="email">Email:</label>
-            <input type="text" id="email" 
-                ngControl="email"  
-                [(ngModel)]="newContact.email"
-                required
+            <input type="text" id="email"
+            [ngFormControl]="contactForm.controls['email']"
             >
         </div>
-        <button type="submit" [disabled]="!contactForm.form.valid">Create contact</button>
+        <button type="submit" [disabled]="!contactForm.valid">Create contact</button>
     </form>
     `,
     providers: [ContactService],
@@ -62,16 +57,21 @@ import {Contact} from './contact'
 
 export class NewContactComponent implements OnInit{
 
-    newContact: Contact;
+    contactForm: ControlGroup;
 
-    constructor(private _contactService: ContactService, private _router: Router, private _routeParams: RouteParams) {}
+    constructor(private _contactService: ContactService, private _router: Router, private _routeParams: RouteParams, private _formBuilder: FormBuilder) {}
 
     onSubmit(){
-        this._contactService.insertContact(this.newContact);
+        this._contactService.insertContact(this.contactForm.value);
         this._router.navigate(['Contacts']);
     }
 
     ngOnInit():any{
-        this.newContact = { firstName: '', lastName: this._routeParams.get('lastName'), phone: '', email: '' };
+        this.contactForm = this._formBuilder.group({
+            firstName: ['', Validators.required],
+            lastName: [this._routeParams.get('lastName'), Validators.required],
+            phone: ['', Validators.required],
+            email: ['', Validators.required]
+        });
     }
 }
