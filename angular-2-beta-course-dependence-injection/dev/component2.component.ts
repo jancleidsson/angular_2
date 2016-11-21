@@ -11,8 +11,7 @@ import { RandomDataService } from './random-data.service';
         <input type="text" #input>
         <button (click)="onAddItem(input.value)">Add</button>
     </div>                
-    `,
-    providers: [RandomDataService]
+    `
 })
 
 export class Component2Component {
